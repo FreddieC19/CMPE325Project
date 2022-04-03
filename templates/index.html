@@ -56,12 +56,12 @@
           <p>
             Everything you need to operate the prototype, including a gesture tutorial, can be found by clicking the
             Settings button that is located at the bottom-right of your screen. We designed it this way with the
-            intention that this menu would be visible and accessible from any web page, giving you complete control over
+            intention that this menu would be visible and accessible from any window, giving you complete control over
             the tracker. For now, however, we want to give you a feel for what it might be like.
           </p>
 
           <p class="py-3">
-            As long as this page remains open, you will be able to use this prototype from any web page or desktop
+            As long as this window remains open, you will be able to use this prototype from any web page or desktop
             application on your computer. Once you get a feel for it, try using
             <a href="https://youtube.com" target="_blank" class="text-blue-700 underline hover:text-blue-800"
               >YouTube</a
@@ -82,14 +82,8 @@
             </p>
 
             <p class="py-3">
-              When you're ready, you can start the prototype by clicking the green button below. You will need to give
-              your browser access to your camera (<a
-                href="https://support.onemob.com/hc/en-us/articles/360037342154-How-do-I-grant-permission-for-Camera-and-Microphone-in-my-web-browser-"
-                target="_blank"
-                class="text-blue-700 underline hover:text-blue-800"
-                >click here</a
-              >
-              if you have any trouble with this).
+              When you're ready, you can start the prototype by clicking the green button below. You may need to give
+              your command line access to use your camera and control your cursor.
             </p>
           </div>
 
@@ -127,6 +121,9 @@
           <div class="mt-6 grid grid-cols-5">
             <div class="col-start-2 col-span-3 text-center">
               <img x-bind:src="isTracking ? '{{ url_for('video_feed') }}' : ''" width="100%" />
+
+              <video id="_video" autoplay></video>
+              <img id="_img" src="" />
               <!-- <button
                 x-cloak
                 x-show="isTracking"

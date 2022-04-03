@@ -1,13 +1,15 @@
 # Learned from https://www.youtube.com/watch?v=8gPONnGIPgw
 
-from flask import Flask, render_template, Response, request
+from flask import Flask, render_template, Response
 import cv2
 import numpy as np
 import Tracker as htm
 import time
 import autopy
+from flaskwebgui import FlaskUI  # import FlaskUI
 
 app = Flask(__name__)
+ui = FlaskUI(app, maximized=True, close_server_on_exit=False)  # add app and parameters
 
 
 def gen_frames():
@@ -80,8 +82,6 @@ def gen_frames():
                            15, (0, 255, 0), cv2.FILLED)
                 autopy.mouse.click()
                 time.sleep(0.5)
-                
-                
 
         # 11. Frame Rate
         cTime = time.time()
@@ -100,7 +100,6 @@ def gen_frames():
 
 @app.route('/video_feed')
 def video_feed():
-
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
@@ -111,4 +110,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    ui.run()
